@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<conio.h>
+
+
+void main(){
+
+  int Y;
+  int X;
+	int Resultado;
+
+
+	X = 20;
+    Y = 20;
+
+	Resultado = X + Y;
+
+	printf("EL RESULTADO ES: %d", Resultado);
+
+
+	getch();
+}
