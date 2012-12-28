@@ -1,13 +1,23 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
+#include<stdio.h>
+#include<conio.h>
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
+void main(){
+
+  int Y;
+	int X;
+	int Resultado;
+
+
+	X = 20;
+    Y = 20;
+
+	Resultado = X + Y;
+
+	printf("EL RESULTADO ES: %d", Resultado);
+
+
+	getch();
+}
+
+	
