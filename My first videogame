@@ -1,0 +1,80 @@
+//Este es el codigo del controlador del juego GameController
+using UnityEngine;
+using System.Collections;
+
+public class PlayerController : MonoBehaviour 
+{
+	public float speed;
+	public GUIText countText;
+	public GUIText winText;
+	private int count;
+	void Start()
+	{
+			count = 0;
+		SetCountText ();
+		winText.text = "";
+	}
+
+	void FixedUpdate ()
+	{
+		float moveHorizontal = Input.GetAxis ("Horizontal");
+		float moveVertical = Input.GetAxis ("Vertical");
+
+		Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+		rigidbody.AddForce(movement * speed * Time.deltaTime);
+	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.tag == "PickUp") 
+		{
+			other.gameObject.SetActive (false);
+			count = count + 1;
+			SetCountText ();
+
+
+		}
+	}
+	void SetCountText()
+	{
+				countText.text = "Count: " + count.ToString ();
+		        if (count >= 13) 
+		{       winText.text = "YOU WIN";
+				}
+		
+
+		}
+}
+//Este es el codigo del controlador de la camara CameraControler
+using UnityEngine;
+using System.Collections;
+
+public class CameraController : MonoBehaviour 
+{
+	public GameObject player;
+	private Vector3 offset;
+
+	// Use this for initialization
+	void Start () 
+	{
+		offset = transform.position;
+	}
+	
+	// Update is called once per frame
+	void LateUpdate () 
+	{
+		transform.position = player.transform.position + offset;
+	}
+}
+//Este es el codigo que hace rotar a los cubos Rotator
+using UnityEngine;
+using System.Collections;
+
+public class Rotator : MonoBehaviour 
+{
+
+	void Update () 
+	{
+		transform.Rotate(new Vector3(15, 30, 45) * Time.deltaTime);
+	}
+}
